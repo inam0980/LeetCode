@@ -11,11 +11,7 @@ class Solution {
             if(nums[i]>0){
                 if(nums[i]==m){
                     m++;
-                }
-                else if(nums[i]<m){
-                    m=m;
-                }
-                
+                }      
             }
         }
         return m;
