@@ -2,17 +2,23 @@ import java.util.*;
 
 class MinStack {
     Stack<Integer> st = new Stack<>();
+    
+    
 
     public MinStack() {}
 
     public void push(int val) {
         st.push(val);
+      
+
+        
     }
 
     public void pop() {
-        if (!st.isEmpty()) {
-            st.pop();
-        }
+        int x=st.pop();
+
+      
+
     }
 
     public int top() {
@@ -28,6 +34,8 @@ class MinStack {
             }
         }
         return min;
+
+        
         
     }
 }
