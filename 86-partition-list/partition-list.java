@@ -1,42 +1,25 @@
 class Solution {
     public ListNode partition(ListNode head, int x) {
+        ListNode smallerHead = new ListNode(0);
+        ListNode greaterHead = new ListNode(0);
 
-        Queue<Integer> q = new LinkedList<>();
+        ListNode smaller = smallerHead;
+        ListNode greater = greaterHead;
 
-        // Step 1: Put all values into queue
-        ListNode temp = head;
-        while (temp != null) {
-            q.add(temp.val);
-            temp = temp.next;
-        }
-
-        Queue<Integer> left = new LinkedList<>();
-        Queue<Integer> right = new LinkedList<>();
-
-        
-        while (!q.isEmpty()) {
-            int val = q.poll();
-            if (val < x) {
-                left.add(val);
+        while (head != null) {
+            if (head.val < x) {
+                smaller.next = head;
+                smaller = smaller.next;
             } else {
-                right.add(val);
+                greater.next = head;
+                greater = greater.next;
             }
+            head = head.next;
         }
 
-        
-        ListNode dummy = new ListNode(0);
-        ListNode curr = dummy;
+        greater.next = null;           
+        smaller.next = greaterHead.next;
 
-        while (!left.isEmpty()) {
-            curr.next = new ListNode(left.poll());
-            curr = curr.next;
-        }
-
-        while (!right.isEmpty()) {
-            curr.next = new ListNode(right.poll());
-            curr = curr.next;
-        }
-
-        return dummy.next;
+        return smallerHead.next;
     }
 }
