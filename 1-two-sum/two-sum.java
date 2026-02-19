@@ -5,14 +5,20 @@ class Solution {
 
         for(int i=0;i<nums.length;i++){
 
-            int x=target-nums[i];
-
-            if(map.containsKey(x)){
-                return new int[]{map.get(x),i};
-            }
+            
             map.put(nums[i],i);
         }
 
+
+
+
+        for(int i=0;i<nums.length;i++){
+            int x=target-nums[i];
+
+            if(map.containsKey(x) && map.get(x) != i){
+                return new int[]{i,map.get(x)};
+            }
+        }
         return new int[]{0,0};
 
        
