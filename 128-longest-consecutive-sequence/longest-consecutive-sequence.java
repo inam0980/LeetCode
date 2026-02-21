@@ -3,27 +3,24 @@ class Solution {
 
         HashSet<Integer> set= new HashSet<>();
 
-        for(int x: nums){
+        for(int x:nums){
             set.add(x);
         }
-
         int max=0;
-
         for(int x: set){
-            if(!set.contains(x-1)){
-                int crr=x;
-                int count=0;
 
+            int crr=x;
+
+            if(!set.contains(crr-1)){
+                int c=0;
                 while(set.contains(crr)){
                     crr++;
-                    count++;
+                    c++;
                 }
-                max= Math.max(max,count);
+                max= Math.max(max,c);
             }
         }
         return max;
-
-
         
     }
 }
