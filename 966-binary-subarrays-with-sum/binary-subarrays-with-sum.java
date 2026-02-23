@@ -1,19 +1,21 @@
 class Solution {
     public int numSubarraysWithSum(int[] nums, int goal) {
-        
-        Map<Integer, Integer> count = new HashMap<>();
-        count.put(0, 1);
 
-        int prefix = 0;
-        int ans = 0;
 
-        for (int num : nums) {
-            prefix += num;
-            ans += count.getOrDefault(prefix - goal, 0);
+        int c=0;
+        int s=0;
 
-            count.put(prefix, count.getOrDefault(prefix, 0) + 1);
+
+        for(int i=0;i<nums.length;i++){
+            s=0;
+            for(int j=i;j<nums.length;j++){
+                s+=nums[j];
+                if(s==goal){
+                    c++;
+                }
+            }
         }
-
-        return ans;
+        return c;
+        
     }
 }
